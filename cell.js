@@ -28,7 +28,10 @@ export class Cell{
         return !!this.linkedTileForMerge;
     }
     canAccept(newTile){
-        return this.isEmpty() || (this.hasTileForMerge() && this.linkedTile.value === newTile.value);
+        return (
+            this.isEmpty() ||
+            (!this.hasTileForMerge() && this.linkedTile.value === newTile.value)
+        );
     }
     mergeTiles(){
         this.linkedTile.setValue(this.linkedTile.value + this.linkedTileForMerge.value);
